@@ -1,8 +1,17 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:imprezowe_wyzwanie/app/kobieta/kobieta.dart';
-import 'package:imprezowe_wyzwanie/app/mezczyzna/mezczyzna.dart';
 
-void main() {
+import 'package:imprezowe_wyzwanie/app/loginPage.dart';
+import 'package:imprezowe_wyzwanie/app/mainpage/mainpage.dart';
+
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -16,61 +25,28 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MainPage(),
+      home: const FirstPage(),
     );
   }
 }
 
-class MainPage extends StatelessWidget {
-  const MainPage({
+class FirstPage extends StatelessWidget {
+  const FirstPage({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Imprezowe wyzwanie'),
-        backgroundColor: Colors.blue,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Witaj w aplikacji imprezowe wyzwanie!',
-            ),
-            const SizedBox(
-              height: 70,
-            ),
-            const Text('Wybierz swoją płeć'),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (_) => KobietaPage()));
-                  },
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                  child: const Text('kobieta'),
-                ),
-                const SizedBox(width: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (_) => MezczyznaPage()));
-                  },
-                  child: const Text('mężczyzna'),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
+    return StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          final user = snapshot.data;
+
+          if (user == null) {
+            return loginPage();
+          }
+
+          return MainPage(user: user);
+        });
   }
 }
