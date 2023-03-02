@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "736860671360",
+    "project_id": "imprezowewyzwanie",
+    "storage_bucket": "imprezowewyzwanie.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736860671360:android:bffde883d245178d8bc565",
+        "android_client_info": {
+          "package_name": "com.damiangawronski.imprezowe_wyzwanie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736860671360-4j5cq9dpbv9o9i70pvej60qra9bd35v7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHDZ_Ajpzs0kTD-N0vpv4i6NE58hzRHlU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "736860671360-4j5cq9dpbv9o9i70pvej60qra9bd35v7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
