@@ -12,7 +12,7 @@ class WyzwanieMezczyzna extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber[100],
+      backgroundColor: Colors.black,
       appBar: AppBar(
         title: const Text('Kobieta'),
         backgroundColor: Colors.purple,
@@ -21,6 +21,12 @@ class WyzwanieMezczyzna extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const CircleAvatar(
+              backgroundImage: AssetImage(
+                'images/pytajnik.png',
+              ),
+              radius: 100,
+            ),
             StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
                 stream: FirebaseFirestore.instance
                     .collection('mezczyzna')
@@ -37,13 +43,17 @@ class WyzwanieMezczyzna extends StatelessWidget {
                   final documents = snapshot.data!.docs;
                   final index = Random().nextInt(documents.length);
 
-                  return Text(
-                    documents[index]['zadanie'],
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.acme(
-                      color: Colors.purple[900],
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20.0,
+                  return Container(
+                    padding: const EdgeInsets.all(20),
+                    margin: const EdgeInsets.all(20),
+                    child: Text(
+                      documents[index]['zadanie'],
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.lato(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 20.0,
+                      ),
                     ),
                   );
                 }),

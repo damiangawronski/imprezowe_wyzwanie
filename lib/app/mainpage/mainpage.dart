@@ -34,7 +34,7 @@ class MainPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                margin: EdgeInsets.all(20),
+                margin: const EdgeInsets.all(20),
                 child: Text(
                   'Witaj w aplikacji imprezowe wyzwanie!',
                   textAlign: TextAlign.center,
@@ -53,7 +53,7 @@ class MainPage extends StatelessWidget {
                 style: GoogleFonts.lato(
                   color: Colors.grey,
                   fontWeight: FontWeight.w700,
-                  fontSize: 12.0,
+                  fontSize: 13.0,
                 ),
               ),
               const SizedBox(
@@ -81,9 +81,11 @@ class MainPage extends StatelessWidget {
                         ),
                       );
                     },
-                    style:
-                        ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                    child: const Text('kobieta'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      foregroundColor: Colors.white,
+                    ),
+                    child: const Icon(Icons.woman),
                   ),
                   const SizedBox(width: 20),
                   ElevatedButton(
@@ -95,8 +97,10 @@ class MainPage extends StatelessWidget {
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.purple),
-                    child: const Text('mężczyzna'),
+                      backgroundColor: Colors.purple,
+                      foregroundColor: Colors.white,
+                    ),
+                    child: const Icon(Icons.man),
                   ),
                 ],
               ),
@@ -106,7 +110,14 @@ class MainPage extends StatelessWidget {
                   onPressed: () {
                     FirebaseAuth.instance.signOut();
                   },
-                  child: const Text('wyloguj'),
+                  child: Text(
+                    'wyloguj',
+                    style: GoogleFonts.lato(
+                      color: Colors.grey,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 15.0,
+                    ),
+                  ),
                 ),
               ),
             ],

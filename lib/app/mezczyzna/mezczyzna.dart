@@ -10,63 +10,74 @@ class MezczyznaPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.amber[100],
-      appBar: AppBar(
-        title: const Text('Mężczyzna'),
-        backgroundColor: Colors.purple,
+    return Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        image: DecorationImage(
+          image: AssetImage("images/party.jpg"),
+          fit: BoxFit.cover,
+        ),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'ZOBACZ SWOJE WYZWANIE',
-              style: GoogleFonts.creepster(
-                color: Colors.purple[900],
-                fontWeight: FontWeight.w500,
-                fontSize: 20.0,
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => const WyzwanieMezczyzna(),
-                ));
-              },
-              child: const Text(
-                'losuj',
-              ),
-            ),
-            const SizedBox(
-              height: 100,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text(
-                    'powrót',
-                  ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          title: const Text('Mężczyzna'),
+          backgroundColor: Colors.purple,
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'ZOBACZ SWOJE WYZWANIE',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.creepster(
+                  color: Colors.yellow[800],
+                  fontWeight: FontWeight.w500,
+                  fontSize: 40.0,
                 ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (_) => const KobietaPage()));
-                  },
-                  child: const Text(
-                    'zmień na kobietę',
-                  ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => const WyzwanieMezczyzna(),
+                  ));
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.purple),
+                child: const Text(
+                  'losuj',
                 ),
-              ],
-            ),
-          ],
+              ),
+              const SizedBox(
+                height: 100,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text(
+                      'powrót',
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) => const KobietaPage()));
+                    },
+                    child: const Text(
+                      'zmień na kobietę',
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

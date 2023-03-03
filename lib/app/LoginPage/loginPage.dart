@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({
@@ -19,25 +20,46 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.amber[100],
+        backgroundColor: Colors.black,
         body: Center(
           child: Padding(
             padding: const EdgeInsets.all(25.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(isCreatingaccount == true
-                    ? 'zarejestruj się'
-                    : 'zaloguj się'),
+                const CircleAvatar(
+                  backgroundImage: AssetImage(
+                    'images/registration.jpg',
+                  ),
+                  radius: 100,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Text(
+                  isCreatingaccount == true ? 'ZAREJESTRUJ SIĘ' : 'ZALOGUJ SIĘ',
+                  style: GoogleFonts.lato(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 25.0,
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
                 TextField(
                   decoration: const InputDecoration(
                     hintText: 'email',
+                    filled: true,
+                    fillColor: Colors.white,
                   ),
                   controller: widget.emailcontroller,
                 ),
                 TextField(
                   decoration: const InputDecoration(
                     hintText: 'hasło',
+                    filled: true,
+                    fillColor: Colors.white,
                   ),
                   controller: widget.passwordcontroller,
                   obscureText: true,

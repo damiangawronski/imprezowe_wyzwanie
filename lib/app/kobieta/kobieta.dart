@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:imprezowe_wyzwanie/app/kobieta/wyzwanie_kobieta.dart';
-import 'package:imprezowe_wyzwanie/app/mainpage/mainpage.dart';
 import 'package:imprezowe_wyzwanie/app/mezczyzna/mezczyzna.dart';
 
 class KobietaPage extends StatelessWidget {
@@ -11,65 +10,76 @@ class KobietaPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.amber[100],
-      appBar: AppBar(
-        title: const Text('Kobieta'),
-        backgroundColor: Colors.red,
+    return Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        image: DecorationImage(
+          image: AssetImage("images/party.jpg"),
+          fit: BoxFit.cover,
+        ),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'ZOBACZ SWOJE WYZWANIE',
-              style: GoogleFonts.creepster(
-                color: Colors.purple[900],
-                fontWeight: FontWeight.w500,
-                fontSize: 20.0,
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) => const WyzwanieKobieta()));
-              },
-              child: const Text(
-                'losuj ',
-              ),
-            ),
-            const SizedBox(
-              height: 70,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text(
-                    'powrót',
-                  ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          title: const Text('Kobieta'),
+          backgroundColor: Colors.red,
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'ZOBACZ SWOJE WYZWANIE',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.creepster(
+                  color: Colors.yellow[800],
+                  fontWeight: FontWeight.w500,
+                  fontSize: 40.0,
                 ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (_) => const MezczyznaPage(),
-                      ),
-                    );
-                  },
-                  child: const Text(
-                    'zmień na mężczyznę',
-                  ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) => const WyzwanieKobieta()));
+                },
+                child: const Text(
+                  'losuj ',
                 ),
-              ],
-            ),
-          ],
+              ),
+              const SizedBox(
+                height: 70,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text(
+                      'powrót',
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => const MezczyznaPage(),
+                        ),
+                      );
+                    },
+                    child: const Text(
+                      'zmień na mężczyznę',
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
