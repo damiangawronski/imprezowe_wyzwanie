@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:imprezowe_wyzwanie/app/kobieta/wyzwanie_kobieta.dart';
+import 'package:imprezowe_wyzwanie/app/mainpage/mainpage.dart';
 import 'package:imprezowe_wyzwanie/app/mezczyzna/mezczyzna.dart';
 
 class KobietaPage extends StatelessWidget {
@@ -31,7 +33,10 @@ class KobietaPage extends StatelessWidget {
               height: 30,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const WyzwanieKobieta()));
+              },
               child: const Text(
                 'losuj ',
               ),
@@ -52,8 +57,11 @@ class KobietaPage extends StatelessWidget {
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (_) => const MezczyznaPage()));
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const MezczyznaPage(),
+                      ),
+                    );
                   },
                   child: const Text(
                     'zmień na mężczyznę',
