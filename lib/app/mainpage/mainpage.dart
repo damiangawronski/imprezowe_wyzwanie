@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:imprezowe_wyzwanie/app/kobieta/kobieta.dart';
 import 'package:imprezowe_wyzwanie/app/mezczyzna/mezczyzna.dart';
 
@@ -15,6 +16,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.amber[100],
       appBar: AppBar(
         title: const Text('Imprezowe wyzwanie'),
         backgroundColor: Colors.blue,
@@ -23,16 +25,36 @@ class MainPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
+            Text(
               'Witaj w aplikacji imprezowe wyzwanie!',
+              style: GoogleFonts.creepster(
+                color: Colors.purple[900],
+                fontWeight: FontWeight.w500,
+                fontSize: 22.0,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
             ),
             Text(
               'jesteś zalogowany jako ${user.email}',
+              style: GoogleFonts.lato(
+                color: Colors.grey,
+                fontWeight: FontWeight.w700,
+                fontSize: 12.0,
+              ),
             ),
             const SizedBox(
               height: 70,
             ),
-            const Text('Wybierz swoją płeć'),
+            Text(
+              'Wybierz swoją płeć:',
+              style: GoogleFonts.lato(
+                color: Colors.purple[900],
+                fontWeight: FontWeight.w700,
+                fontSize: 18.0,
+              ),
+            ),
             const SizedBox(
               height: 20,
             ),
@@ -42,7 +64,10 @@ class MainPage extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).push(
-                        MaterialPageRoute(builder: (_) => const KobietaPage()));
+                      MaterialPageRoute(
+                        builder: (_) => const KobietaPage(),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                   child: const Text('kobieta'),
@@ -50,12 +75,26 @@ class MainPage extends StatelessWidget {
                 const SizedBox(width: 20),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (_) => const MezczyznaPage()));
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const MezczyznaPage(),
+                      ),
+                    );
                   },
+                  style:
+                      ElevatedButton.styleFrom(backgroundColor: Colors.purple),
                   child: const Text('mężczyzna'),
                 ),
               ],
+            ),
+            Container(
+              alignment: Alignment.bottomCenter,
+              child: TextButton(
+                onPressed: () {
+                  FirebaseAuth.instance.signOut();
+                },
+                child: const Text('wyloguj'),
+              ),
             ),
           ],
         ),

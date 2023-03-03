@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'package:imprezowe_wyzwanie/app/loginPage.dart';
+import 'package:imprezowe_wyzwanie/app/LoginPage/loginPage.dart';
 import 'package:imprezowe_wyzwanie/app/mainpage/mainpage.dart';
-
 import 'package:firebase_core/firebase_core.dart';
+
 import 'firebase_options.dart';
 
 void main() async {
@@ -43,7 +43,7 @@ class FirstPage extends StatelessWidget {
           final user = snapshot.data;
 
           if (user == null) {
-            return loginPage();
+            return LoginPage();
           }
 
           return MainPage(user: user);
